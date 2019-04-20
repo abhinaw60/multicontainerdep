@@ -10,9 +10,10 @@ after_success:
   - docker build -t abhinav1710/abhinav/multi-nginx ./nginx
   - docker build -t abhinav1710/abhinav/multi-server ./server
   - docker build -t abhinav1710/abhinav/multi-worker ./worker
-  - docker ps
+  - docker ps --all
+  - docker images
 # login to docker cli
-  - echo "$DOCKER_PASSWORD" | docker login https://hub.docker.com/ -u "abhinav1710" --password-stdin
+  - echo "abhinav@123" | docker login -u "abhinav1710" --password-stdin
   - docker push abhinav1710/abhinav/multi-client
   - docker push abhinav1710/abhinav/multi-nginx
   - docker push abhinav1710/abhinav/multi-server
