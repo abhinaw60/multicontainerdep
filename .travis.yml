@@ -13,7 +13,7 @@ after_success:
   - docker ps --all
   - docker images
 # login to docker cli
-  - echo "abhinav@123" | docker login -u "abhinav1710" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push abhinav1710/abhinav/multi-client
   - docker push abhinav1710/abhinav/multi-nginx
   - docker push abhinav1710/abhinav/multi-server
