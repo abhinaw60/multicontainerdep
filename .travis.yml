@@ -1,28 +1,18 @@
 sudo: required
 services:
   - docker
-before_install:
-   - docker build -t abhinav/react-test -f ./client/Dockerfile.dev ./client
-
-script:
-
-  - docker run abhinav/react-test npm test -- --coverage
-
-after_success:
+before_install: 
+  - docker build -t abhinav/react-test -f ./client/Dockerfile.dev ./client
+script: 
+  - "docker run abhinav/react-test npm test -- --coverage"
+after_success: 
   - docker build -t abhinav/multi-client ./client
   - docker build -t abhinav/multi-nginx ./nginx
   - docker build -t abhinav/multi-server ./server
   - docker build -t abhinav/multi-worker ./worker
-
 # login to docker cli
-
-
-
-- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-
-#take the images and push to docker hub
-
-- docker push abhinav/multi- client
-- docker push abhinav/multi-nginx
-- docker push abhinav/multi-server
-- docker push abhinav/multi-worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push abhinav/multi- client
+  - docker push abhinav/multi-nginx
+  - docker push abhinav/multi-server
+  - docker push abhinav/multi-worker
