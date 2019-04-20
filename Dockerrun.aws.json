@@ -8,7 +8,8 @@
         "name": "client",
         "image": "abhinav1710/multi-client",
         "hostname": "client",
-        "essential": false
+        "essential": false,
+        "memory": 128
         
     },
     {
@@ -16,7 +17,8 @@
         "name": "server",
         "image": "abhinav1710/multi-server",
         "hostname": "server",
-        "essential": false
+        "essential": false,
+        "memory": 128
         
     },
     {
@@ -24,7 +26,8 @@
         "name": "worker",
         "image": "abhinav1710/multi-worker",
         "hostname": "worker",
-        "essential": false
+        "essential": false,
+        "memory": 128
         
     },
 
@@ -34,6 +37,7 @@
         "image": "abhinav1710/multi-nginx",
         "hostname": "nginx",
         "essential": true,
+      
         "portmapings": [
 
             {
@@ -43,7 +47,8 @@
             }
         ],
 
-        "links": ["client", "server"]
+        "links": ["client", "server"],
+        "memory": 128
     }
     
 
